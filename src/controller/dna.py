@@ -2,8 +2,8 @@ import numpy as np
 
 class DNAController:
 
-    def __init__(self, assassino="TAAGAAACCGTCTGT") -> None:
-        self.assassino = assassino
+    def __init__(self, assassino_dna: str ="TAAGAAACCGTCTGT") -> None:
+        self.assassino = assassino_dna
         
     def compara_dna(self, suspeito) -> float:
         """
@@ -26,11 +26,6 @@ class DNAController:
                 delete = score[i - 1][j] + gap_cost
                 insert = score[i][j - 1] + gap_cost
                 score[i][j] = min(match, delete, insert)
-
-        for i in range(0, m):
-            for j in range(0, n):
-                print(score[i][j], end="\t")
-            print("\n")
 
         align1, align2 = '', ''
         i,j = m,n
@@ -57,4 +52,4 @@ class DNAController:
 
         match = sum([1 for x, y in zip(align1, align2) if x == y])
         match_percentage = match / len(align1) * 100
-        return match_percentage
+        return round(match_percentage, 1)
