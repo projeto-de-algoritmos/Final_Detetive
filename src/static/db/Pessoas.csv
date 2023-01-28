@@ -1,9 +1,10 @@
-Nome, Relacao, Dna
-Joao, pai,CTGCATTTGGAACCT
-Suzana, mae,GCATATGCGGTTATG
-Jaimundo, porteiro,CAACTAAATTTAATA
-Pedro, vizinho,CTGGACGCCGGGACA
-Anitta, interesse amoroso,TGGCGCACAGTCGCT
-Leila, melhor amiga,TAACGAAATTATTAG
-Amanda, padeira,TTATGGATCGAATCA
-Matheus, ex,TAAGAAACCGTCTGT
+Nome,Relacao,Dna
+Maria,vitima,GCACATGCGGAAATG
+Joao,pai,CTGCATTTGGAACCT
+Suzana,mae,GCATATGCGGTTATG
+Jaimundo,porteiro,CAACTAAATTTAATA
+Pedro,vizinho,CTGGACGCCGGGACA
+Anitta,interesse amoroso,TGGCGCACAGTCGCT
+Leila,melhor amiga,TAACGAAATTATTAG
+Amanda,padeira,TTATGGATCGAATCA
+Matheus,ex,TAAGAAACCGTCTGT
