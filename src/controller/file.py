@@ -16,4 +16,8 @@ class FileController:
         return init_graph
 
     def extract_pessoas(self) -> List[Pessoa]:
-        return [Pessoa(a.Nome, a.Relacao, a.Dna) for a in self.df.itertuples()]
+        pessoas = {}
+        for a in self.df.itertuples():
+            pessoas[a.Nome] = Pessoa(a.Nome, a.Relacao, a.Dna, a.Saldacao, a.Reacao, a.Alibi, a.Suspeito)
+        
+        return pessoas

@@ -10,7 +10,7 @@
 | 18/0119818  |  Felipe Boccardi Silva Agustini |
 
 ## Sobre 
-Descreva os objetivos do seu projeto e como ele funciona. 
+Esse projeto é um jogo de Investigação. Você irá jogar como um detetive investigando um crime. Para isso há um grafo que contém nodes pessoas e uma amostra de dna. A cada vez que avança na investigação você recebe mais conexões e vai perdendo a amostra de dna usada para encontrar o criminoso.  
 
 ## Screenshots
 Adicione 3 ou mais screenshots do projeto em funcionamento.
@@ -42,15 +42,11 @@ pip install -r requirements.txt
 
 Para rodar os testes basta executar o comando a baixo.
 ```
-python -m unittest tests/unit/test_graph.py
+python -m unittest discover tests/unit/
 ```
 
 ## Uso 
-Explique como usar seu projeto caso haja algum passo a passo após o comando de execução.
-
-## Outros 
-Quaisquer outras informações sobre seu projeto podem ser descritas abaixo.
-
-
-
-
+Basta executar o arquivo `app.py`. 
+```
+python src/app.py
+```

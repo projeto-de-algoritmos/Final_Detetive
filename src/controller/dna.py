@@ -5,6 +5,9 @@ class DNAController:
     def __init__(self, assassino_dna: str ="TAAGAAACCGTCTGT") -> None:
         self.assassino = assassino_dna
         
+    def destroi_dna(self) -> None:
+        self.assassino = self.assassino[:-1]
+
     def compara_dna(self, suspeito) -> float:
         """
         Compara o Dna de um suspeito com o dna do assassino encontrado na cena do crime
@@ -52,4 +55,7 @@ class DNAController:
 
         match = sum([1 for x, y in zip(align1, align2) if x == y])
         match_percentage = match / len(align1) * 100
+
+        print(f'Usando amostra...')
+        self.destroi_dna()
         return round(match_percentage, 1)

@@ -33,3 +33,4 @@ class TestSequenceAlingment(unittest.TestCase):
         suspect_DNA   = "CTGGACGCCGGGACA"
         match_received = self.controller.compara_dna(suspect_DNA)
         self.assertEqual(expect_match, match_received)
+        

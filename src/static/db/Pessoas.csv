@@ -1,10 +1,10 @@
-Nome,Relacao,Dna
-Maria,vitima,GCACATGCGGAAATG
-Joao,pai,CTGCATTTGGAACCT
-Suzana,mae,GCATATGCGGTTATG
-Jaimundo,porteiro,CAACTAAATTTAATA
-Pedro,vizinho,CTGGACGCCGGGACA
-Anitta,interesse amoroso,TGGCGCACAGTCGCT
-Leila,melhor amiga,TAACGAAATTATTAG
-Amanda,padeira,TTATGGATCGAATCA
-Matheus,ex,TAAGAAACCGTCTGT
+Nome,Relacao,Dna,Saldacao,Reacao,Alibi,Suspeito
+Maria,"Sou a vitima",GCACATGCGGAAATG,"Olá, detetive, estou morta! O que te traz aqui?","Jura?","Fui comprar pão","Obvio que o Matheus, aquele feio"
+Joao,"Sou pai dela",CTGCATTTGGAACCT,"Olá, detetive, o que te traz aqui?","É uma pena","Sai com Suzana","Nenhum."
+Suzana,"Meu bb, eu era mãe dela",GCATATGCGGTTATG,"Olá, detetive, estou bem! E você?","Oh não! (choro)","Em um restaurante com Joao","Aquele tal de Jaimundo, nunca gostei dele"
+Jaimundo,"Eu só trabalho como porteiro",CAACTAAATTTAATA,"Olá, detetive! O que te traz aqui?","Vish, eu sou um suspeito?","Estava no intervalo com Amanda","Talvez você possa falar com o Pedro" 
+Pedro,"Sou apenas um vizinho",CTGGACGCCGGGACA,"Inhai! O que te traz aqui?","Ih, sabia que alguma coisa ia acontecer com ela","Eu estava em casa, tenho nada a ver com isso","Sei nada sobre ela, mas a Anitta vinha sempre aqui"
+Anitta,"A gente estava saindo juntas",TGGCGCACAGTCGCT,"Olá?","Como assim? (choro)","Eu estava com ela ontem na padaria, quando precisei vir para a faculdade","Você pode falar com a Leila, ela parecia sempre agir muito estranho com ela"
+Leila,"Eu sou a melhor amiga daquela bixa",TAACGAAATTATTAG,"Olá,gatx, tudo bomm?","Mentira!","Eu tava num role otimo na casa do vizinho da Maria","Certezaaa que é o Matheus, ela andava reclamando muito dele"
+Amanda,"Eu trabalho na padaria senhor",TTATGGATCGAATCA,"Olá, detetive, aceita um pão?","Eita, como posso ajudar?","Estava no intervalo com o seu Jaimundinho","Eu vi um cara estranho seguindo ela. É aquele ali de chapeu te olhando!!"
+Matheus,"Nenhuma, não sou ex dela",TAAGAAACCGTCTGT,"O que você quer?","Não foi eu","Não estava na padaria","A Maria?"
