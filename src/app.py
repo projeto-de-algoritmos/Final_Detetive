@@ -42,7 +42,11 @@ def game():
 
     main_page = MainPage(pygame, screen)
 
-    botoes_list = []
+    button_width = 130
+    button_height = 40
+    button_padding = 100
+
+    botoes_list = [Button("texto", pygame, screen, button_height=screen.get_height() - button_height -300)]
 
     delay_time = 100
     last_key_check_time = 0
@@ -58,7 +62,7 @@ def game():
         if current_time - last_key_check_time > delay_time:
             keys = pygame.key.get_pressed()
             if keys[pygame.K_RETURN]:
-                main_page.text = changetext(text_appear)
+                main_page.text.text = changetext(text_appear)
                 text_appear +=1
             last_key_check_time = current_time
         
