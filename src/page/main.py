@@ -11,7 +11,7 @@ class MainPage:
         self.screen = screen 
 
         self.portrait_image = self.pygame.image.load(portrait_path)
-        self.portrait_image = self.pygame.transform.scale(self.portrait_image, (200, 200))
+        self.portrait_image = self.pygame.transform.scale(self.portrait_image, (225, 225))
 
         self.text_box = self.pygame.Rect(0, self.screen.get_height() - 150, 500, 150)
         self.color_box = self.pygame.Surface((self.text_box.width, self.text_box.height))
@@ -43,7 +43,7 @@ class MainPage:
 
     def update(self) -> None:
         self.screen.blit(self.background_image, (0, 0))
-        self.screen.blit(self.portrait_image, (150, 150))
+        self.screen.blit(self.portrait_image, (140, 125))
         
         self.screen.blit(self.color_box, self.text_box)
         
