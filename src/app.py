@@ -23,7 +23,20 @@ previous_nodes, shortest_path = graph.graph.dijkstra_algorithm(start_node="Maria
 visited_peoples = ['Maria']
 option = ['Maria']
 
-def clicked(botoes_list):
+pygame.init()
+
+screen = pygame.display.set_mode((500,500))
+pygame.display.set_caption(("Dna Detective"))
+
+main_page = MainPage(pygame, screen)
+caso_em_aberto = False
+
+botoes_list = []
+
+delay_time = 100
+last_key_check_time = 0
+text_appear = 0
+def clicked(botoes_list, screen):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -31,105 +44,80 @@ def clicked(botoes_list):
         if event.type == pygame.MOUSEBUTTONUP:
             for b in botoes_list:
                 if b.button.collidepoint(event.pos):
-                    b.action()
+                    visited_peoples.append(b.text) if b.text not in visited_peoples else visited_peoples
+                    caso_em_aberto = PessoaController(pessoas[b.text], dna, screen, pygame).preso
+
+                    main_page.text.text = f'Perdendo amostra...'
+                    dna.destroi_dna()
 
 
 def game():
-    pygame.init()
+    global botoes_list, caso_em_aberto, main_page, screen, visited_peoples, option, delay_time, last_key_check_time, text_appear
 
-    screen = pygame.display.set_mode((500,500))
-    pygame.display.set_caption(("Dna Detective"))
+    while caso_em_aberto != True:
+        if text_appear <= 8:
+            current_time = pygame.time.get_ticks()
+            if current_time - last_key_check_time > delay_time:
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_RETURN]:
+                    main_page.text.text = changetext(text_appear)
+                    text_appear +=1
+                last_key_check_time = current_time
+        else: 
+            for p in visited_peoples:
+                for key in graph.graph.graph[p]:
+                    option.append(key) if key not in option else option
 
-    main_page = MainPage(pygame, screen)
+            botoes_list = []
+            for i, opt in enumerate(option):
+                if i>0:
+                    width = screen.get_width() / len(option)
+                    b = Button(opt, pygame, screen, x = (i * width) - 50 , button_width = width - 10, font_size=int(width/ len(option) + 3))
+                    botoes_list.append(b)
 
-    button_width = 130
-    button_height = 40
-    button_padding = 100
-
-    botoes_list = [Button("texto", pygame, screen, button_height=screen.get_height() - button_height -300)]
-
-    delay_time = 100
-    last_key_check_time = 0
-    text_appear = 0
-    run = True
-    while run:
-
-        clicked(botoes_list)
-        
         main_page.update()
 
-        current_time = pygame.time.get_ticks()
-        if current_time - last_key_check_time > delay_time:
-            keys = pygame.key.get_pressed()
-            if keys[pygame.K_RETURN]:
-                main_page.text.text = changetext(text_appear)
-                text_appear +=1
-            last_key_check_time = current_time
-        
         for b in botoes_list:
             b.update()
 
-        # update display
+        clicked(botoes_list, screen)
         pygame.display.update()
+
+
+        # print(f'Fim de jogo')
+        # print(f'Você fez a melhor rota!') if (visited_peoples == graph.get_path(previous_nodes, 
+        #                                                                     start_node="Maria", 
+        #                                                                     target_node="Matheus")
+        #                                     )else print(f'Você demorou demais!')
+        # print(f'Você descobriu o culpado!') if pessoa == "Matheus" else print(f'Você não achou o culpado!')
+
+        # main_page.update()
+        # # update display
+        # pygame.display.update()
+
         
     pygame.quit()
     exit()
 
-def menu_escolha() -> None:
-    caso_em_aberto = False
-    pessoa = None
-    while caso_em_aberto != True:
-        text = (f'*******************************\nEscolha alguem para entrevistar!')
-        for p in visited_peoples:
-            for key in graph.graph.graph[p]:
-                option.append(key) if key not in option else option
-        
-        for i, opt in enumerate(option):
-            if i>0:
-                print(f'[{i}] {opt}')
-        print(f'[{len(option)}] Sair')
-
-        try:
-            escolha = int(input())
-            if (escolha < 0 or escolha > len(option)):
-                raise KeyError
-            elif (escolha==len(option)):
-                caso_em_aberto = True
-                break
-            visited_peoples.append(option[escolha]) if option[escolha] not in visited_peoples else visited_peoples
-            caso_em_aberto = PessoaController(pessoas[option[escolha]], dna).preso
-
-            print(f'Perdendo amostra...')
-            dna.destroi_dna()
-            pessoa = option[escolha]
-        except:
-            print("Precisa ser um número")
-
-    print(f'*******************************')
-    print(f'Fim de jogo')
-    print(f'Você fez a melhor rota!') if (visited_peoples == graph.get_path(previous_nodes, 
-                                                                           start_node="Maria", 
-                                                                           target_node="Matheus")
-                                        )else print(f'Você demorou demais!')
-    print(f'Você descobriu o culpado!') if pessoa == "Matheus" else print(f'Você não achou o culpado!')
-
-def changetext( count : int) -> None:
+def changetext(count: int) -> None:
     if count == 0:
-        return('Bem vindo!')
-    elif count == 1:
         return('Esse é um jogo de Investigação')
-    elif count == 2:
+    elif count == 1:
         return('Você é um detetive que está investigando o caso de Maria')
+    elif count == 2:
+        return('Maria foi assassinada na noite passada na praça às 21h')
     elif count == 3:
-        return('Maria foi assassinada na noite passada na praça de São Carlos as 21h')
-    elif count == 4:
         return('Na praça de São Carlos você encontrou o DNA do suspeito')
+    elif count == 4:
+        return('Agora basta você ter um suspeito para verificar o DNA')
     elif count == 5:
-        return('Agora basta você encontrar um suspeito para verificar o DNA')
+        return('Toda vez que você compara o DNA você perde um pouco ')
     elif count == 6:
-        return('Mas cuidado! Toda vez que você compara o DNA você perde um pouco compare com sabedoria')
+        return('compare com sabedoria')
     elif count == 7:
         return('E a cada entrevista também! Então tome cuidado')
+    elif count == 8:
+        return('Escolha alguem para entrevistar!')
 
 if __name__ == "__main__":
     game()

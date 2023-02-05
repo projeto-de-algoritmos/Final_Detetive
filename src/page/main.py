@@ -1,7 +1,7 @@
 from components.texto import Texto
 
 class MainPage:
-    def __init__(self, pygame, screen, background_image_path: str = "assets/Interrogation_room.png") -> None:
+    def __init__(self, pygame, screen, background_image_path: str = "assets/Interrogation_room.png", text: str='Bem vindo!') -> None:
         self.pygame = pygame
         self.screen = screen 
         # create a rect object for the text box
@@ -15,13 +15,23 @@ class MainPage:
 
         text_padding = 10
         self.text = Texto(
-            "", 
+            text, 
             self.pygame,
             self.screen, 
             self.text_box.left + text_padding, 
             self.text_box.top + text_padding, 
             self.text_box.width - 2 * text_padding, 
-            self.text_box.height - 2 * text_padding)
+            self.text_box.height - 2 * text_padding,
+            font_size=22)
+        self.text_enter = Texto(
+            "Aperte enter", 
+            self.pygame,
+            self.screen, 
+            self.text_box.left + 410, 
+            self.text_box.top +  140, 
+            self.text_box.width - 2 * text_padding, 
+            self.text_box.height - 2 * text_padding,
+            font_size=15)
 
 
     def update(self) -> None:
@@ -30,3 +40,6 @@ class MainPage:
         
         text_image = self.text.create_wrapped_text_surface(self.text.text,self.text.font.render(self.text.text, True, (255, 255, 255)) )
         self.screen.blit(text_image, self.text.text_rect)
+
+        text_enter = self.text_enter.create_wrapped_text_surface(self.text_enter.text,self.text_enter.font.render(self.text_enter.text, True, (255, 255, 255)) )
+        self.screen.blit(text_enter, self.text_enter.text_rect)
