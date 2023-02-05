@@ -67,7 +67,7 @@ def game():
             for p in visited_peoples:
                 for key in graph.graph.graph[p]:
                     option.append(key) if key not in option else option
-
+            
             botoes_list = []
             for i, opt in enumerate(option):
                 if i>0:
@@ -80,7 +80,7 @@ def game():
                                font_size=int(width/ len(option) + 3)
                                )
                     botoes_list.append(b)
-
+        main_page.portrait = "assets/None.png"
         main_page.update()
 
         for b in botoes_list:

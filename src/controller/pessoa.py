@@ -13,7 +13,10 @@ class PessoaController:
         self.pygame = pygame 
         self.run = True
         self.menu = True
-        self.main_page = MainPage(self.pygame, self.screen, text=f'[Detetive] Olá! {self.pessoa.nome}, como você está?')
+        self.main_page = MainPage(self.pygame, 
+                                  self.screen, 
+                                  text=f'[Detetive] Olá! {self.pessoa.nome}, como você está?',
+                                  portrait_path=f'assets/{self.pessoa.nome}.png')
         delay_time = 100
         last_key_check_time = 0
         text_appear = 0
