@@ -33,7 +33,7 @@ caso_em_aberto = False
 
 botoes_list = []
 
-delay_time = 100
+delay_time = 150
 last_key_check_time = 0
 text_appear = 0
 def clicked(botoes_list, screen):
@@ -59,7 +59,7 @@ def game():
             current_time = pygame.time.get_ticks()
             if current_time - last_key_check_time > delay_time:
                 keys = pygame.key.get_pressed()
-                if keys[pygame.K_RETURN]:
+                if keys[pygame.K_RETURN] or keys[pygame.K_SPACE]:
                     main_page.text.text = changetext(text_appear)
                     text_appear +=1
                 last_key_check_time = current_time
@@ -72,7 +72,13 @@ def game():
             for i, opt in enumerate(option):
                 if i>0:
                     width = screen.get_width() / len(option)
-                    b = Button(opt, pygame, screen, x = (i * width) - 50 , button_width = width - 10, font_size=int(width/ len(option) + 3))
+                    b = Button(opt, 
+                               pygame, 
+                               screen, 
+                               x = (i * width) - 50 , 
+                               button_width = width - 10, 
+                               font_size=int(width/ len(option) + 3)
+                               )
                     botoes_list.append(b)
 
         main_page.update()
@@ -117,7 +123,7 @@ def changetext(count: int) -> None:
     elif count == 7:
         return('E a cada entrevista também! Então tome cuidado')
     elif count == 8:
-        return('Escolha alguem para entrevistar!')
+        return('Escolha um suspeito para interrogar!')
 
 if __name__ == "__main__":
     game()

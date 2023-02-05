@@ -24,10 +24,10 @@ class MainPage:
             self.text_box.height - 2 * text_padding,
             font_size=22)
         self.text_enter = Texto(
-            "Aperte enter", 
+            "Aperte enter para continuar", 
             self.pygame,
             self.screen, 
-            self.text_box.left + 410, 
+            self.text_box.left + 360, 
             self.text_box.top +  140, 
             self.text_box.width - 2 * text_padding, 
             self.text_box.height - 2 * text_padding,
