@@ -36,6 +36,7 @@ botoes_list = []
 delay_time = 150
 last_key_check_time = 0
 text_appear = 0
+
 def clicked(botoes_list, screen):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -44,11 +45,17 @@ def clicked(botoes_list, screen):
         if event.type == pygame.MOUSEBUTTONUP:
             for b in botoes_list:
                 if b.button.collidepoint(event.pos):
-                    visited_peoples.append(b.text) if b.text not in visited_peoples else visited_peoples
-                    caso_em_aberto = PessoaController(pessoas[b.text], dna, screen, pygame).preso
+                    suspeito = PessoaController(pessoas[b.text], dna, screen, pygame)
+                    caso_em_aberto = suspeito.preso
+                    if(caso_em_aberto != True):
+                        visited_peoples.append(b.text) if b.text not in visited_peoples else visited_peoples
+                        main_page.text.text = f'Perdendo amostra...'
+                        dna.destroi_dna()
+                    else:
+                        endgame(suspeito)
+                    
 
-                    main_page.text.text = f'Perdendo amostra...'
-                    dna.destroi_dna()
+                        
 
 
 def game():
@@ -88,22 +95,54 @@ def game():
 
         clicked(botoes_list, screen)
         pygame.display.update()
-
-
-        # print(f'Fim de jogo')
-        # print(f'Você fez a melhor rota!') if (visited_peoples == graph.get_path(previous_nodes, 
-        #                                                                     start_node="Maria", 
-        #                                                                     target_node="Matheus")
-        #                                     )else print(f'Você demorou demais!')
-        # print(f'Você descobriu o culpado!') if pessoa == "Matheus" else print(f'Você não achou o culpado!')
-
-        # main_page.update()
-        # # update display
-        # pygame.display.update()
-
-        
     pygame.quit()
     exit()
+
+def endgame(preso : PessoaController):
+    easter_egg = False
+    main_page.text.text = f'Fim de jogo'
+    if (preso.pessoa.nome == "Matheus"):
+        text_resultado = f'Você descobriu o culpado!'
+        botao_end = Button(f'Parabens',pygame,screen, 125,40,460,250,30)
+        easter_egg = True
+        if (visited_peoples == graph.get_path(previous_nodes,start_node="Maria",target_node="Matheus")):
+            text_speed = f'Você fez a melhor rota!'
+        else:
+            text_speed = f'Você demorou demais!'
+
+    else:
+        text_resultado = f'Você não achou o culpado!'
+        text_speed = f''
+        botao_end = Button(f'Tentar novamente',pygame,screen, 125,40,460,250,30)
+
+    font = pygame.font.Font(None, 36)
+    text_resultado_image = font.render(text_resultado, True, (255, 255, 255))
+    text_speed_image = font.render(text_speed, True, (255, 255, 255))
+    #Rect(left, top, width, height) -
+    text_resultado_box = pygame.Rect(100, 260, 200, 50)
+    text_speed_box = pygame.Rect(120, 300, 200, 50)
+    end = True
+    while end:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                end = False
+            if event.type == pygame.MOUSEBUTTONUP:
+                if easter_egg == True:
+                    #liberar Maria
+                    ...
+                game()
+       
+        main_page.update()
+
+        screen.blit(text_resultado_image, text_resultado_box)
+        screen.blit(text_speed_image, text_speed_box)
+        botao_end.update()
+        pygame.display.update()
+    
+    pygame.quit()
+    exit()
+
+    ...
 
 def changetext(count: int) -> None:
     if count == 0:

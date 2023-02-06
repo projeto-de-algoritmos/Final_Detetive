@@ -10,11 +10,16 @@
 | 18/0119818  |  Felipe Boccardi Silva Agustini |
 
 ## Sobre 
-Esse projeto é um jogo de Investigação. Você irá jogar como um detetive investigando um crime. Para isso há um grafo que contém nodes pessoas e uma amostra de dna. A cada vez que avança na investigação você recebe mais conexões e vai perdendo a amostra de dna usada para encontrar o criminoso.  
+Esse projeto é um jogo de Investigação. Você irá jogar como um detetive investigando um crime. Para isso há um grafo que contém nodes pessoas e uma amostra de dna. A cada vez que avança na investigação você recebe mais conexões e vai perdendo a amostra de dna usada para encontrar o criminoso. O Dna é analisado usando o algoritimo de alinhamento de sequencia.
 
 ## Screenshots
-Adicione 3 ou mais screenshots do projeto em funcionamento.
+![imagem 1](/public/1.PNG)
 
+![imagem 2](/public/2.PNG)
+
+![imagem 3](/public/3.PNG)
+
+![imagem 4](/public/4.PNG)
 ## Instalação 
 *Linguagem*: Python<br>
 *Framework*: <br>
@@ -50,3 +55,4 @@ Basta executar o arquivo `app.py`.
 ```
 python src/app.py
 ```
+Utilize o mouse para clicar nos botões e a tecla enter ou a barra de espaço para passar os dialogos.

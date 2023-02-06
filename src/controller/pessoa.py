@@ -69,6 +69,7 @@ class PessoaController:
         elif escolha == 4:
             self.main_page.text.text = f'Você prendeu {self.pessoa.nome}.'
             self.preso = True
+            self.run = False
         elif escolha == 5:
             self.run = False
 
