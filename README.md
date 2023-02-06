@@ -20,6 +20,11 @@ Esse projeto é um jogo de Investigação. Você irá jogar como um detetive inv
 ![imagem 3](/public/3.PNG)
 
 ![imagem 4](/public/4.PNG)
+
+## Video
+
+https://user-images.githubusercontent.com/23579166/217007559-e90498ff-5e7a-4690-a1b6-9b4bea7f085a.mp4
+
 ## Instalação 
 *Linguagem*: Python<br>
 *Framework*: <br>
