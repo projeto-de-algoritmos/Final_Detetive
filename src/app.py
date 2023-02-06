@@ -47,16 +47,12 @@ def clicked(botoes_list, screen):
                 if b.button.collidepoint(event.pos):
                     suspeito = PessoaController(pessoas[b.text], dna, screen, pygame)
                     caso_em_aberto = suspeito.preso
+                    visited_peoples.append(b.text) if b.text not in visited_peoples else visited_peoples
                     if(caso_em_aberto != True):
-                        visited_peoples.append(b.text) if b.text not in visited_peoples else visited_peoples
                         main_page.text.text = f'Perdendo amostra...'
                         dna.destroi_dna()
                     else:
                         endgame(suspeito)
-                    
-
-                        
-
 
 def game():
     global botoes_list, caso_em_aberto, main_page, screen, visited_peoples, option, delay_time, last_key_check_time, text_appear
