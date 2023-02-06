@@ -36,8 +36,10 @@ botoes_list = []
 delay_time = 150
 last_key_check_time = 0
 text_appear = 0
+hacker = 1
 
 def clicked(botoes_list, screen):
+    global hacker
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -53,9 +55,12 @@ def clicked(botoes_list, screen):
                         dna.destroi_dna()
                     else:
                         endgame(suspeito)
+                keys = pygame.key.get_pressed()
+                if keys[pygame.K_h]:
+                    hacker = 0
 
 def game():
-    global botoes_list, caso_em_aberto, main_page, screen, visited_peoples, option, delay_time, last_key_check_time, text_appear
+    global hacker,botoes_list, caso_em_aberto, main_page, screen, visited_peoples, option, delay_time, last_key_check_time, text_appear
 
     while caso_em_aberto != True:
         if text_appear <= 8:
@@ -73,7 +78,7 @@ def game():
             
             botoes_list = []
             for i, opt in enumerate(option):
-                if i>0:
+                if i>=hacker:
                     width = screen.get_width() / len(option)
                     b = Button(opt, 
                                pygame, 
@@ -124,8 +129,8 @@ def endgame(preso : PessoaController):
                 end = False
             if event.type == pygame.MOUSEBUTTONUP:
                 if easter_egg == True:
-                    #liberar Maria
-                    ...
+                    pygame.quit()
+                    raise SystemExit
                 game()
        
         main_page.update()
